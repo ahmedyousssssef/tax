@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+      <record id="hr_rule_tax" model="hr.salary.rule">
+            <field name="name">Salary Tax</field>
+            <field name="sequence" eval="50"/>
+            <field name="code">TAX</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result=bool(payslip.tax_amount and payslip.payslip_tax_type == 'month')</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = -(payslip.tax_amount)
+            </field>
+        </record>
+
+    </data>
+</openerp>

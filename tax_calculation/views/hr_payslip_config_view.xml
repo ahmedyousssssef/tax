@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_hr_payroll_tax_configuration" model="ir.ui.view">
+            <field name="name">hr.payroll.config.settings</field>
+            <field name="model">hr.payroll.config.settings</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payroll_configuration"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//form//group//div[1]" position="after">
+                    <field name="payslip_tax_type" style="width:30%"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

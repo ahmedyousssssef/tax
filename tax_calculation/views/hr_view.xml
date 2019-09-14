@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_employee_form_inherit_001" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit_001</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook//page//group/group[@name='active_group']" position="after">
+                    <group string="Salary Hold" name="warning_group">
+                        <field name="is_warning"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

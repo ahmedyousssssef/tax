@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_hr_payslip_form_inherit_001" model="ir.ui.view">
+            <field name="name">hr.payslip.form.inherit</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header//button[@name='refund_sheet']" position="after">
+                    <button name="action_payroll_send" string="Send by Email" type="object" states="draft,done"
+                            class="btn-primary"/>
+
+                </xpath>
+
+                <xpath expr="//group//field[@name='credit_note']" position="after">
+                    <field name="is_refund" invisible="1"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <act_window name="PaySlip Mass Mailing"
+                res_model="mail.compose.message"
+                src_model="hr.payslip"
+                view_mode="form"
+                multi="True"
+                target="new"
+                key2="client_action_multi"
+                id="action_payslip_mass_mail"/>
+                <!--context="{'default_composition_mode': 'mass_mail','default_partner_to': '${object.id or \'\'}','default_active_domain': [['id', 'in', context.get('active_ids', [])]],}"/>-->
+
+
+    </data>
+</openerp>
